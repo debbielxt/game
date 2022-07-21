@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class gamePerson {
+            constructor(name, exp, level) {
+                this.exp = exp;
+                this.level = level;
+            }
+            // 首先添加经验值
+            // 判断经验值是否大于full
+            // 大于full，等级+1
+            // 小于full,继续添加经验值
+            add(a) {
+                this.exp = this.exp + a;
+                if (this.level === 0) {
+                    this.checkIfUpdate(1000);
+                    return;
+                }
+                if (this.level === 1) {
+                    this.checkIfUpdate(2000);
+                    return;
+                }
+                if (this.level === 2) {
+                    this.checkIfUpdate(3000);
+                    return;
+                }
+                if (this.level === 3) {
+                    this.checkIfUpdate(5000);
+                    return;
+                }
+            }
+
+            checkIfUpdate(full) {
+                if (this.exp >= full) {
+                    this.level = this.level + 1;
+                    this.exp = this.exp - full;
+                }
+            }
+        }
+        let xiaoming = new gamePerson('小明', 0, 0);
+        xiaoming.add(900);
+        xiaoming.add(900);
+        xiaoming.add(1300);
+        console.log(xiaoming);
+    </script>
+</body>
+
+</html>

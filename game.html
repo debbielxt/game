@@ -14,7 +14,10 @@
     </style>
 
     <script>
+
         window.onload = function () {
+            let username = prompt('请输入您的姓名');
+            // 网页打开，自动生成一个随机数（0 到 1000），作为答案
             function getRandom(min, max) {
                 return Math.floor(Math.random() * (max - min + 1)) + min;
             }
@@ -24,6 +27,8 @@
             let input = document.querySelector('input');
             let btn = document.querySelector('button');
             btn.onclick = function () {
+                // - 用户在输入框输入一个数字，点击提交
+                // - 如果输入的不是数字，提示用户，清除输入框，输入框重新获取焦点
                 let a = parseInt(input.value);
                 if (isNaN(a)) {
                     alert('请输入一个数字');
@@ -38,6 +43,10 @@
                     input.focus();
                     input.value = '';
                 } else {
+                    // 当他猜出结果，将他成绩存储到本地
+                    localStorage.setItem('username', a);
+
+                    // 当他刷新页面，需要恢复游戏状态，而不是重新开始游戏
                     alert('成功，开始新一轮游戏');
                     input.focus();
                     input.value = '';
@@ -56,9 +65,6 @@
         <input type="number" placeholder="请输入一个数字">
         <button>提交</button>
     </div>
-
-
-
 </body>
 
 </html>
